@@ -82,9 +82,9 @@ function Round3() {
       </div>
 
       {/* Timer */}
-      <div className="fixed top-4 left-4 flex items-center gap-2 bg-gray-800/80 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700/50 shadow-lg">
-        <Timer className="w-5 h-5 text-purple-400" />
-        <span className="font-mono text-purple-100">{formatTime(time)}</span>
+      <div className="fixed w-32 h-14 top-4 left-4 flex items-center gap-2 bg-zinc-200/20 backdrop-blur-sm px-4 py-2 rounded-lg border border-gray-700/50 shadow-lg">
+        <Timer className="w-6 h-6 text-purple-400" />
+        <span className="font-mono text-purple-100 text-2xl">{formatTime(time)}</span>
       </div>
 
       {/* Main Content */}
@@ -98,7 +98,7 @@ function Round3() {
               <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
                 Enter the Code
               </h1>
-              <p className="text-gray-400 text-lg">Open the round3 folder and proceed...</p>
+              <h2 className="text-xl mt-6 font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Note: Download and Open the round3 folder and proceed...</h2>
             </div>
             <form onSubmit={handleSubmit} className="w-full max-w-md">
               <div className="relative group">
@@ -107,7 +107,7 @@ function Round3() {
                   type="text"
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
-                  className={`w-full bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-lg py-4 px-12 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 text-white placeholder-gray-500 shadow-lg transition-all ${
+                  className={`w-full bg-gray-800/50 border border-zinc-300 rounded-lg py-4 px-12 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 text-white placeholder-zinc-400 shadow-lg transition-all ${
                     isShaking ? 'animate-shake1' : ''
                   }`}
                   placeholder="Enter the secret code..."
@@ -119,7 +119,7 @@ function Round3() {
             </form>
             <button
               onClick={downloadFolder}
-              className="mt-10 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold py-4 px-8 rounded-lg flex items-center gap-3 mx-auto hover:from-emerald-400 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-green-500/20"
+              className="mt-10 bg-gradient-to-r from-emerald-500 to-blue-500 text-white font-bold py-4 px-8 rounded-lg flex items-center gap-3 mx-auto hover:from-orange-400 hover:to-red-400 transition-all duration-1000 shadow-lg hover:shadow-yellow-500/20 ease-in"
             >
               Download Folder
               <Download className="w-5 h-5" />
@@ -127,19 +127,19 @@ function Round3() {
           </>
         ) : (
           <div className="text-center transform animate-fade-in1">
-            <div className="mb-8">
+            <div className="mb-8 flex flex-col items-center gap-3">
               <div className="w-24 h-24 rounded-full bg-purple-500/20 mx-auto flex items-center justify-center mb-6">
                 <div className="w-16 h-16 rounded-full bg-purple-500/40 flex items-center justify-center animate-pulse">
                   <div className="w-8 h-8 rounded-full bg-purple-400"></div>
                 </div>
               </div>
-              <h2 className="text-5xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+              <h2 className="h-14 text-5xl font-bold mb-8 bg-gradient-to-r from-green-400 to-emerald-700 bg-clip-text text-transparent">
                 Congratulations!
               </h2>
-              <p className="text-xl mb-8 text-gray-300">
-                Your key is: <span className="font-mono text-3xl text-purple-400 bg-purple-500/10 px-4 py-2 rounded-lg ml-2">7</span>
+              <p className="text-2xl mb-8 text-gray-300">
+                Your key is: <span className="font-mono text-3xl text-yellow-400 bg-purple-500/10 px-4 py-2 rounded-lg ml-2">7</span>
               </p>
-              <p className="text-lg text-gray-400 mb-8">
+              <p className="text-2xl text-gray-400 mb-8">
                 Time taken: <span className="font-mono text-purple-400">{formatTime(time)}</span>
               </p>
             </div>
