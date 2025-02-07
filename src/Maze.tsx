@@ -192,12 +192,17 @@ function Maze () {
 
   return (
     <div className="min-h-screen bg-[#181818] p-8">
-      <div className="max-w-3xl mx-auto relative">
-        <div className="text-2xl font-mono text-gray-300 bg-[#242424] px-4 py-2 rounded-lg mb-8 inline-block">
+      <div className="max-w-3xl mx-auto flex flex-col items-center">
+        <div className="absolute top-4 left-4 text-2xl font-mono text-gray-300 bg-[#242424] px-4 py-2 rounded-lg mb-8 inline-block">
           {Math.floor(time / 60).toString().padStart(2, '0')}:
           {(time % 60).toString().padStart(2, '0')}
         </div>
-        <div className="flex flex-col items-center"></div>
+        <div className="flex flex-col items-center mb-8">
+          <p className="mt-6 text-gray-300 text-center">
+            Use arrow keys or buttons to navigate through the maze.<br />
+            <span className='text-yellow-500 text-center font-bold text-lg'>Note: Your keys are FAULTY!!!</span>
+          </p>
+        </div>
     <div className="flex flex-col items-center gap-6">
       <div className="bg-[#242424] p-6 rounded-lg shadow-xl">
         <div className="grid gap-0" style={{ gridTemplateColumns: `repeat(${MAZE_SIZE}, 1fr)` }}>
@@ -262,7 +267,7 @@ function Maze () {
       {showDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-[#242424] p-8 rounded-lg shadow-xl text-center">
-            <h2 className="text-2xl font-bold text-gray-200 mb-4">Congratulations!</h2>
+            <h2 className="text-2xl font-bold text-green-500 mb-4">Congratulations!</h2>
             <p className="text-gray-300 text-lg mb-6">The code is 9</p>
             <button
               onClick={handleNextRound}
@@ -274,11 +279,6 @@ function Maze () {
         </div>
       )}
     </div>
-    {gameWon && <p className="text-2xl text-green-500 mt-4">Congratulations! You won!</p>}
-        <p className="mt-6 text-gray-400 text-center">
-          Use arrow keys or buttons to navigate through the maze.<br />
-          Reach the trophy to win!
-        </p>
       </div>
     </div>
   );
