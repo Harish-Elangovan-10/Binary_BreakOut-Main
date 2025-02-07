@@ -130,7 +130,7 @@ function Flip() {
       {gameState !== 'playing' && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
         <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl p-8 max-w-md w-full mx-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-white">
+          <h2 className="text-3xl font-bold mb-4 text-emrald-500">
             🎉 Congratulations!
           </h2>
           <p className="text-2xl mb-2 text-white">
