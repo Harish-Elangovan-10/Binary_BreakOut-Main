@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Trophy, Timer, Clock, Eye, TimerIcon } from 'lucide-react';
+import { Trophy, Clock, Eye, TimerIcon } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 
 const IMAGE_URL = "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=600&h=600&fit=crop";
@@ -42,28 +42,27 @@ function Confetti() {
 function CongratsModal({ moves, time }: { moves: number; time: number; onClose: () => void }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl p-8 max-w-md w-full mx-4 relative animate-slideIn">        
+      <div className="main-bg rounded-xl p-8 max-w-md w-full mx-4 relative animate-slideIn">        
         <div className="text-center">
           <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <Trophy className="w-8 h-8 text-yellow-500" />
           </div>
           
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          <h2 className="h-10 text-3xl font-bold bg-gradient-to-r from-green-400 to-emerald-700 bg-clip-text text-transparent mb-2">
             Congratulations! 🎉
           </h2>
           
-          <p className="text-gray-600 mb-6">
+          <p className="text-zinc-400 mb-6">
             You've successfully completed the Binary Breakout Event!
           </p>
           
-          <div className="bg-gray-50 rounded-lg p-4 mb-6 space-y-2">
+          <div className="bg-white/10 rounded-lg p-4 mb-6 space-y-2">
             <div className="flex items-center justify-center gap-2 text-gray-700">
-              <Timer size={20} />
-              <span className="font-semibold">Total Moves: {moves}</span>
+              <span className="font-semibold text-lg text-yellow-600">Total Moves: {moves}</span>
             </div>
-            <div className="flex items-center justify-center gap-2 text-gray-700">
-              <Clock size={20} />
-              <span className="font-semibold">Time: {formatTime(time)}</span>
+            <div className="flex items-center justify-center gap-2 text-lg text-yellow-600">
+              <Clock size={20} className='text-zinc-300' />
+              <span className="font-semibold">Completion Time: {formatTime(time)}</span>
             </div>
           </div>
         </div>
