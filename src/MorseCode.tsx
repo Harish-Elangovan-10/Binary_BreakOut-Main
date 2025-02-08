@@ -167,6 +167,20 @@ function MorseCode() {
     navigate('/Vault', { state: { round4Time: timer } });
   }, [navigate, timer]);
 
+  useEffect(() => {
+    window.history.pushState(null, '', window.location.href);
+    const handlePopState = (event: PopStateEvent) => {
+      event.preventDefault();
+      window.history.pushState(null, '', window.location.href);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;

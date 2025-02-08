@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Intro() {
@@ -7,6 +7,20 @@ function Intro() {
   const startGame = useCallback(() => {
     navigate('/Maze');
   }, [navigate]);
+
+  useEffect(() => {
+    window.history.pushState(null, '', window.location.href);
+    const handlePopState = (event: PopStateEvent) => {
+      event.preventDefault();
+      window.history.pushState(null, '', window.location.href);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center main-bg px-40 py-10">
@@ -100,3 +114,4 @@ function Intro() {
 };
 
 export default Intro;
+
