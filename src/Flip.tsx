@@ -130,11 +130,11 @@ function Flip() {
       {gameState !== 'playing' && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
         <div className="bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl p-8 max-w-md w-full mx-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-white">
+          <h2 className="text-3xl font-bold mb-4 text-emerald-500">
             🎉 Congratulations!
           </h2>
           <p className="text-2xl mb-2 text-white">
-            You found the key: <span className="text-emerald-600 font-bold">6</span>
+            You found the key: <span className="text-green-600 font-bold">6</span>
           </p>
           <p className="text-xl mb-6 text-white">
             Completion time: {formatTime(time)}
