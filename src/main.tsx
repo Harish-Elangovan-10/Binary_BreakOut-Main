@@ -7,13 +7,15 @@ import Round3 from './Round3';
 import MorseCode from './MorseCode';
 import Vault from './Vault';
 import Puzzle from './Puzzle';
+import Intro from './Intro';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Maze />} />
+        <Route path="/" element={<Intro />} />
+        <Route path="/Maze" element={<Maze />} />
         <Route path="/Flip" element={<Flip />} />
         <Route path="/Round3" element={<Round3 />} />
         <Route path='/MorseCode' element={<MorseCode />} />
