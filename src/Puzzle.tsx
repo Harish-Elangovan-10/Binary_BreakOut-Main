@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Terminal as TerminalIcon, User, Lock, Info, TimerIcon } from "lucide-react";
+import { Terminal as TerminalIcon, User, Lock, TimerIcon } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
 interface TerminalLine {
@@ -346,10 +346,10 @@ export default function Puzzle() {
     ]);
   };
 
-  const handleExit = () => {
-    setLines((prev) => [...prev, { type: "output", content: "Session terminated." }, { type: "output", content: "" }]);
-    setIsActive(false); // ✅ stop timer
-  };
+  // const handleExit = () => {
+  //   setLines((prev) => [...prev, { type: "output", content: "Session terminated." }, { type: "output", content: "" }]);
+  //   setIsActive(false); // ✅ stop timer
+  // };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -619,6 +619,7 @@ export default function Puzzle() {
                 </span>
                 <form onSubmit={handleSubmit} className="flex-1">
                   <input
+                    title="password"
                     ref={inputRef}
                     type={loginStage === "password" ? "password" : "text"}
                     value={input}
@@ -658,7 +659,7 @@ export default function Puzzle() {
 
           {codeResult === "error" && (
             <div className="mt-4 bg-red-900/20 border border-red-800 rounded p-4 text-red-300">
-              Incorrect code. Try again.
+              Incorrect code. Try again. <span className="hidden">{tempUsername}</span>
             </div>
           )}
         </div>

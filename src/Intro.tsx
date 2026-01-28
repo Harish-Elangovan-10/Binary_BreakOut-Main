@@ -1,16 +1,13 @@
 import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  Trophy, 
   Gamepad2, 
   Mail, 
   Search, 
   Hash, 
   Key, 
   Lock, 
-  AlertTriangle, 
-  Clock, 
-  Lightbulb, 
+  AlertTriangle,
   Ban, 
   XCircle, 
   CircleCheck,
