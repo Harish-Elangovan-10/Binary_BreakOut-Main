@@ -12,7 +12,7 @@ function Round3() {
 
   const navigate = useNavigate();
   const nextRound = useCallback(() => {
-    navigate('/MorseCode', { state: { round3Time: time } });
+    navigate('/morsecode', { state: { round3Time: time } });
   }, [navigate, time]);
 
   useEffect(() => {
@@ -53,7 +53,7 @@ function Round3() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (searchInput === 'Why So Serious?') {
+    if (searchInput === 'Escaperoom2026') {
       setShowSuccess(true);
     } else {
       setIsShaking(true);
@@ -88,7 +88,7 @@ function Round3() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute w-96 h-96 bg-purple-500/5 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>

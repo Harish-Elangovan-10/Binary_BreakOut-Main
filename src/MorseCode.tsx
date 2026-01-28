@@ -164,7 +164,7 @@ function MorseCode() {
 
   const navigate = useNavigate();
   const nextRound = useCallback(() => {
-    navigate('/Vault', { state: { round4Time: timer } });
+    navigate('/vault', { state: { round4Time: timer } });
   }, [navigate, timer]);
 
   useEffect(() => {

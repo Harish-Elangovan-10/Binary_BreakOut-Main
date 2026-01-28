@@ -58,7 +58,7 @@ function Maze () {
 
   const navigate = useNavigate();
   const handleNextRound = useCallback(() => {
-    navigate('/Flip', { state: { round1Time: time } });
+    navigate('/phishing', { state: { round1Time: time } });
   }, [navigate, time]);
 
   useEffect(() => {
@@ -205,41 +205,56 @@ function Maze () {
   }, [handleKeyPress]);
 
   return (
-    <div className="min-h-screen bg-[#181818] p-8">
+    <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#111122] to-[#0a0a0a] p-8">
       <div className="max-w-3xl mx-auto flex flex-col items-center">
-        <div className="absolute top-4 left-4 text-2xl font-mono text-gray-300 bg-[#242424] px-4 py-2 rounded-lg mb-8 inline-block">
-          {Math.floor(time / 60).toString().padStart(2, '0')}:
-          {(time % 60).toString().padStart(2, '0')}
+        <div className="absolute top-4 left-4 text-2xl font-mono text-cyan-300 bg-[#0f1419] border border-cyan-500/30 px-6 py-3 rounded-xl shadow-2xl shadow-cyan-500/20 backdrop-blur-sm">
+          <div className="text-center font-bold tracking-wider">
+            <span className="text-cyan-400">TIME:</span> {Math.floor(time / 60).toString().padStart(2, '0')}:
+            {(time % 60).toString().padStart(2, '0')}
+          </div>
         </div>
-        <div className="flex flex-col items-center mb-8">
-          <p className="mt-6 text-gray-300 text-center">
+        <div className="flex flex-col items-center mb-5">
+          <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 mb-2 tracking-wider">
+            NEURAL MAZE
+          </h1>
+          <p className="mt-2 text-cyan-200/80 text-center text-lg">
             Use arrow keys or buttons to navigate through the maze.<br />
-            <span className='text-yellow-500 text-center font-bold text-lg'>Note: Your keys are FAULTY!!!</span>
+            <span className='text-amber-400 text-center font-bold text-lg glow-text animate-pulse'>Note: Your keys are FAULTY!!!</span>
           </p>
         </div>
-    <div className="flex flex-col items-center gap-6">
-      <div className="bg-[#242424] p-6 rounded-lg shadow-xl">
-        <div className="grid gap-0" style={{ gridTemplateColumns: `repeat(${MAZE_SIZE}, 1fr)` }}>
+    <div className="flex flex-col items-center gap-8">
+      <div className="bg-[#0f1419] border-2 border-cyan-500/40 p-8 rounded-3xl shadow-2xl shadow-cyan-500/30 backdrop-blur-sm relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-purple-500/5 pointer-events-none"></div>
+        <div className="grid gap-0.5 relative z-10" style={{ gridTemplateColumns: `repeat(${MAZE_SIZE}, 1fr)` }}>
           {maze.map((row, y) =>
             row.map((cell, x) => (
               <div
                 key={`${x}-${y}`}
-                className="w-8 h-8 relative"
+                className="w-8 h-8 relative bg-[#0a0f14] transition-all duration-200"
                 style={{
-                  borderTop: cell.walls.top ? '2px solid #404040' : 'none',
-                  borderRight: cell.walls.right ? '2px solid #404040' : 'none',
-                  borderBottom: cell.walls.bottom ? '2px solid #404040' : 'none',
-                  borderLeft: cell.walls.left ? '2px solid #404040' : 'none',
+                  borderTop: cell.walls.top ? '2px solid rgb(34 211 238 / 0.8)' : 'none',
+                  borderRight: cell.walls.right ? '2px solid rgb(34 211 238 / 0.8)' : 'none',
+                  borderBottom: cell.walls.bottom ? '2px solid rgb(34 211 238 / 0.8)' : 'none',
+                  borderLeft: cell.walls.left ? '2px solid rgb(34 211 238 / 0.8)' : 'none',
+                  boxShadow: (cell.walls.top || cell.walls.right || cell.walls.bottom || cell.walls.left) 
+                    ? '0 0 8px rgba(34, 211, 238, 0.3), inset 0 0 8px rgba(34, 211, 238, 0.1)' 
+                    : 'none',
                 }}
               >
                 {playerPos.x === x && playerPos.y === y && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full" />
+                    <div className="w-5 h-5 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full animate-pulse shadow-xl shadow-pink-500/60" 
+                         style={{ 
+                           boxShadow: '0 0 20px rgb(236 72 153 / 0.8), 0 0 40px rgb(236 72 153 / 0.4), 0 0 60px rgb(236 72 153 / 0.2)' 
+                         }} />
                   </div>
                 )}
                 {x === MAZE_SIZE - 1 && y === MAZE_SIZE - 1 && (
-                  <div className="absolute inset-0 flex items-center justify-center text-yellow-500">
-                    <Trophy size={20} />
+                  <div className="absolute inset-0 flex items-center justify-center text-amber-400 animate-bounce">
+                    <Trophy size={22} className="drop-shadow-lg" 
+                           style={{ 
+                             filter: 'drop-shadow(0 0 10px rgb(251 191 36 / 0.8)) drop-shadow(0 0 20px rgb(251 191 36 / 0.4))' 
+                           }} />
                   </div>
                 )}
               </div>
@@ -247,48 +262,53 @@ function Maze () {
           )}
         </div>
       </div>
-      <div className="flex flex-col items-center gap-2">
+      <div className="flex flex-col items-center gap-4">
         <div className="flex justify-center gap-2">
           <button
             onClick={() => movePlayer('right')}
-            className="p-2 bg-[#242424] text-gray-300 rounded hover:bg-[#2a2a2a]"
+            className="group p-4 bg-gradient-to-br from-[#1a2332] to-[#0f1419] border-2 border-cyan-500/40 text-cyan-300 rounded-2xl hover:border-cyan-400/80 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 active:scale-95"
           >
-            <ArrowUp size={24} />
+            <ArrowUp size={28} className="group-hover:text-cyan-200 transition-colors duration-200" />
           </button>
         </div>
         <div className="flex justify-center gap-2">
           <button
             onClick={() => movePlayer('up')}
-            className="p-2 bg-[#242424] text-gray-300 rounded hover:bg-[#2a2a2a]"
+            className="group p-4 bg-gradient-to-br from-[#1a2332] to-[#0f1419] border-2 border-cyan-500/40 text-cyan-300 rounded-2xl hover:border-cyan-400/80 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 active:scale-95"
           >
-            <ArrowLeft size={24} />
+            <ArrowLeft size={28} className="group-hover:text-cyan-200 transition-colors duration-200" />
           </button>
           <button
             onClick={() => movePlayer('left')}
-            className="p-2 bg-[#242424] text-gray-300 rounded hover:bg-[#2a2a2a]"
+            className="group p-4 bg-gradient-to-br from-[#1a2332] to-[#0f1419] border-2 border-cyan-500/40 text-cyan-300 rounded-2xl hover:border-cyan-400/80 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 active:scale-95"
           >
-            <ArrowDown size={24} />
+            <ArrowDown size={28} className="group-hover:text-cyan-200 transition-colors duration-200" />
           </button>
           <button
             onClick={() => movePlayer('down')}
-            className="p-2 bg-[#242424] text-gray-300 rounded hover:bg-[#2a2a2a]"
+            className="group p-4 bg-gradient-to-br from-[#1a2332] to-[#0f1419] border-2 border-cyan-500/40 text-cyan-300 rounded-2xl hover:border-cyan-400/80 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 active:scale-95"
           >
-            <ArrowRight size={24} />
+            <ArrowRight size={28} className="group-hover:text-cyan-200 transition-colors duration-200" />
           </button>
         </div>
       </div>
 
       {showDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-[#242424] p-8 rounded-lg shadow-xl text-center">
-            <h2 className="text-2xl font-bold text-green-500 mb-4">Congratulations!</h2>
-            <p className="text-gray-300 text-lg mb-6">The code is 9</p>
-            <button
-              onClick={handleNextRound}
-              className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Next Round
-            </button>
+        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+          <div className="bg-gradient-to-br from-[#0f1419] to-[#1a2332] border-2 border-cyan-500/60 p-10 rounded-3xl shadow-2xl shadow-cyan-500/40 text-center backdrop-blur-sm relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-500/10 pointer-events-none"></div>
+            <div className="relative z-10">
+              <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 mb-6 tracking-wider">
+                MISSION COMPLETE!
+              </h2>
+              <p className="text-cyan-200 text-xl mb-8 font-mono">The code is <span className="text-amber-400 font-bold text-2xl glow-text">9</span></p>
+              <button
+                onClick={handleNextRound}
+                className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-200 shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 tracking-wider"
+              >
+                NEXT ROUND →
+              </button>
+            </div>
           </div>
         </div>
       )}
