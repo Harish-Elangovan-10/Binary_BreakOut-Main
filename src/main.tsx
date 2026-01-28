@@ -22,12 +22,12 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Intro />} />
-      <Route path="/Maze" element={<Maze />} />
-      <Route path="/Flip" element={<Flip />} />
-      <Route path="/Round3" element={<Round3 />} />
-      <Route path='/MorseCode' element={<MorseCode />} />
-      <Route path='/Vault' element={<Vault />} />
-      <Route path='/Puzzle' element={<Puzzle />} />
+      <Route path="/maze" element={<Maze />} />
+      <Route path="/phishing" element={<Flip />} />
+      <Route path="/traversal" element={<Round3 />} />
+      <Route path='/morsecode' element={<MorseCode />} />
+      <Route path='/vault' element={<Vault />} />
+      <Route path='/escaperoom' element={<Puzzle />} />
     </Routes>
   );
 }

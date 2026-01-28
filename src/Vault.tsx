@@ -88,7 +88,7 @@ function Vault() {
 
   const navigate = useNavigate();
   const nextRound = useCallback(() => {
-    navigate('/Puzzle', { state: { round5Time: time } });
+    navigate('/escaperoom', { state: { round5Time: time } });
   }, [navigate, time]);
 
   useEffect(() => {
@@ -185,6 +185,13 @@ function Vault() {
             <div className="text-zinc-300 text-center mb-6 font-mono">
               Enter 4-digit code
             </div>
+            {attempts < 20 && (
+              <div className="text-yellow-500 text-center mb-6 font-mono">
+                Help arrives in{" "}
+                <span className="font-bold text-yellow-400">{20 - attempts}</span>{" "}
+                moves!
+              </div>
+            )}
 
             {attempts >= 20 && !showHint && (
               <button
